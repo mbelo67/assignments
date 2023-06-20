@@ -30,16 +30,25 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { authGuard } from './shared/auth.guard';
 import { LoginComponent } from './login/login.component';  
+import { FrontLayoutComponent } from './layouts/front-layout/front-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { FrontHeaderComponent } from './headers/front-header/front-header.component';
+import { AdminHeaderComponent } from './headers/admin-header/admin-header.component';
+import { FrontSidebarComponent } from './sidebars/front-sidebar/front-sidebar.component';
+import { AdminSidebarComponent } from './sidebars/admin-sidebar/admin-sidebar.component';
+import { FrontFooterComponent } from './footers/front-footer/front-footer.component';
+import { AdminFooterComponent } from './footers/admin-footer/admin-footer.component';
+import { MaterialCustomModule } from '../material.module'
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AssignmentsComponent
-  },
-  {
-    path: 'home',
-    component: AssignmentsComponent
-  },
+  // {
+  //   path: '',
+  //   component: AssignmentsComponent
+  // },
+  // {
+  //   path: 'home',
+  //   component: AssignmentsComponent
+  // },
   {
     path: 'add',
     component: AddAssignmentComponent
@@ -56,7 +65,23 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    children: [
+      { path: '', component: AppComponent, pathMatch: 'full' }
+    ]
+  },
+  {
+    path: '',
+    component: FrontLayoutComponent,
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: AppComponent, pathMatch: 'full' }
+    ]
   }
+
 ]
 @NgModule({
   declarations: [
@@ -66,7 +91,15 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    LoginComponent
+    LoginComponent,
+    AdminLayoutComponent,
+    FrontLayoutComponent,
+    FrontHeaderComponent,
+    AdminHeaderComponent,
+    FrontSidebarComponent,
+    AdminSidebarComponent,
+    FrontFooterComponent,
+    AdminFooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +110,7 @@ const routes: Routes = [
     MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule, MatFormFieldModule, MatDatepickerModule,
     MatListModule, MatCardModule, MatCheckboxModule, MatSlideToggleModule,
-    MatTableModule, MatPaginatorModule
+    MatTableModule, MatPaginatorModule, MaterialCustomModule
   ],
   providers: [],
   bootstrap: [AppComponent]

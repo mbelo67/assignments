@@ -1,0 +1,9 @@
+.app_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .admin-header-spacer {
+    flex: 1 1 auto;
+  }

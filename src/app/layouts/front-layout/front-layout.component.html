@@ -1,0 +1,12 @@
+<app-front-header (toggleNav)="toggler()"></app-front-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #leftSidebar mode="side" opened class="example-sidenav" [fixedInViewport]="options.value.fixed"
+    [fixedTopGap]="options.value.top" [fixedBottomGap]="options.value.bottom">
+    <app-front-sidebar></app-front-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-assignments></app-assignments>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-front-footer></app-front-footer>

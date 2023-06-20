@@ -1,0 +1,17 @@
+<app-admin-header (toggleNav)="leftSidebar.toggle()"></app-admin-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #leftSidebar mode="side" opened class="example-sidenav" [fixedInViewport]="options.value.fixed"
+    [fixedTopGap]="options.value.top" [fixedBottomGap]="options.value.bottom">
+    <app-admin-sidebar></app-admin-sidebar>
+  </mat-sidenav>
+  <mat-sidenav #rightSidebar mode="side" position="end" opened class="right-sidenav">
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar ></mat-calendar>
+    </mat-card>
+   </mat-sidenav>
+  <!-- <mat-sidenav-content [formGroup]="options" > -->
+  <mat-sidenav-content>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-admin-footer></app-admin-footer>
