@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Assignment } from '../assignment.model';
-import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { Assignment } from '../../models/assignment.model';
+import { AssignmentService } from 'src/app/services/assignment.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
 
-  constructor(private assignmentsService: AssignmentsService,
+  constructor(private assignmentsService: AssignmentService,
     private route: ActivatedRoute,
     private router: Router,
     private authService:AuthService) { }
@@ -67,7 +67,7 @@ export class AssignmentDetailComponent implements OnInit {
     // path = "/assignment/" + this.assignmentTransmis?.id + "/edit";
     // this.router.navigate([path]);
     // c'est pour vous montrer la syntaxe avec [...]
-    this.router.navigate(["/assignments", this.assignmentTransmis?.id, "edit"],
+    this.router.navigate(["/assignments", this.assignmentTransmis?._id, "edit"],
     {
       queryParams: {
         nom: this.assignmentTransmis?.nom,
@@ -79,6 +79,6 @@ export class AssignmentDetailComponent implements OnInit {
 
   isLogged() {
     // renvoie si on est loggé ou pas
-    return this.authService.loggedIn;
+    return this.authService.isLoggedIn;
   }
 }
