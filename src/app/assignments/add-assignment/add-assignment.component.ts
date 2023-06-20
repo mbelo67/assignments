@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Assignment } from '../assignment.model';
-import { AssignmentsService } from 'src/app/shared/assignments.service';
+import { Assignment } from '../../models/assignment.model';
+import { AssignmentService } from 'src/app/services/assignment.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class AddAssignmentComponent {
   dateDeRendu!: Date;
 
 
-  constructor(private assignmentsService: AssignmentsService,
+  constructor(private assignmentsService: AssignmentService,
               private router:Router) { }
 
   onSubmit(event: any) {
@@ -25,7 +25,7 @@ export class AddAssignmentComponent {
 
     let nouvelAssignment = new Assignment();
     // génération d'id, plus tard ce sera fait dans la BD
-    nouvelAssignment.id = Math.abs(Math.random() * 1000000000000000);
+    nouvelAssignment._id = Math.abs(Math.random() * 1000000000000000).toString();
     nouvelAssignment.nom = this.nomDevoir;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;

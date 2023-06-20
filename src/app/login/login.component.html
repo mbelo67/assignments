@@ -1,1 +1,41 @@
-<p>ICI FORMULAIRE DE CONNEXION</p>
+<mat-grid-list cols="1" rows="1" rowHeight="2:1">
+    <mat-grid-tile>
+        <mat-card class="example-card" layout="row" layout-align="center center">
+            <mat-card-title >
+                Connectez vous
+            </mat-card-title>
+            <mat-error *ngIf="loginError">{{loginError}}</mat-error>
+            <mat-card-content layout-align="center center">
+                <form ngForm class="example-form">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Email" [(ngModel)]="userEmail" name="username"
+                                        required>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Mot de passe" [(ngModel)]="userPassword" type="password"
+                                        name="password" required>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-checkbox [(ngModel)]="rememberMe">Se souvenir de moi</mat-checkbox>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+            </mat-card-content>
+            <mat-card-actions >
+                <button mat-raised-button (click)="login()" color="primary" layout-align="center center">Login</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

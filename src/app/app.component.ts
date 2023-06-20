@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './services/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { AssignmentsService } from './shared/assignments.service';
+import { AssignmentService } from './services/assignment.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,19 @@ export class AppComponent {
   labelConnexion = "Se connecter";
   nom:string = "";
   currentRoute:string = "";
-
+  /*constructor(/*fb: FormBuilder*) {
+    /*this.options = fb.group({
+      bottom: 0,
+      fixed: false,
+      top: 0,
+    });*
+    console.log("app component");
+  }*/
+  
   constructor(private authService:AuthService, 
               private router:Router,
-              private assigmmentsService:AssignmentsService) {
-    console.log(router.url);
+              private assigmmentService:AssignmentService) {
+    //console.log(router.url);
 
     router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
@@ -29,10 +37,10 @@ export class AppComponent {
     
   }
 
-  login() {
+  /*login() {
     // utilise l'authService pour se connecter
-    if(!this.authService.loggedIn) {
-      this.authService.logIn();
+    if(!this.authService.isLoggedIn) {
+      //this.authService.logIn();
       // on change le label du bouton
       this.labelConnexion = "Se déconnecter";
     } else {
@@ -40,15 +48,15 @@ export class AppComponent {
       // et on navigue vers la page d'accueil
       this.router.navigate(["/home"]);
     }
-  }
+  }*/
 
-  isLogged() {
+  /*isLogged() {
     if(this.authService.loggedIn) {
       this.nom = "Michel Buffa";
     }
     return this.authService.loggedIn;
-  }
-
+  }*/
+/*
   creerDonneesDeTest() {
     this.assigmmentsService.peuplerBDavecForkJoin()
     .subscribe(() => {
@@ -58,5 +66,5 @@ export class AppComponent {
       // plusieurs manières de faire....
       window.location.reload();
     });
-  }
+  }*/
 }
