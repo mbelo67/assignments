@@ -4,11 +4,14 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
-//import { TransactionsComponent } from './front/transactions/transactions.component';
-//import { AddTransactionComponent } from './front/transactions/add-transaction/add-transaction.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { AssignmentsFrontComponent } from './assignments/assignments-front/assignments-front.component';
+import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
+import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
+import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
 
 const appRoutes: Routes = [
   //Site routes goes here 
@@ -39,11 +42,37 @@ const appRoutes: Routes = [
       { path: '', component: AppComponent, pathMatch: 'full' },
     ]
   },
+  {
+    path: 'assignments-etudiant',
+    component: AssignmentsFrontComponent
+  },
+  {
+    path: 'add',
+    component: AddAssignmentComponent
+  },
+  {
+    path: 'assignments/:id',
+    component: AssignmentDetailComponent
+  },
+  {
+    path: 'assignments/:id/edit',
+    component: EditAssignmentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    children: [
+      { path: '', component: AppComponent, pathMatch: 'full' },
+      { path: 'assignments', component: AssignmentsComponent, pathMatch: 'full' }
+    ]
+  },
 
   //no layout routes
   { path: 'login', component: LoginComponent },
   // otherwise redirect to home
-  { path: '**', redirectTo: '/404' }
+  { path: '**', redirectTo: '/404' },
+
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
