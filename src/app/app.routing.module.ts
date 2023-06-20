@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {
     path: '',
     component: FrontLayoutComponent, 
-    /*canActivate: [AuthGuard],*/
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: AppComponent, pathMatch: 'full' },
       { path: '403', component: ForbiddenComponent, pathMatch: 'full' },
