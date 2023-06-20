@@ -22,5 +22,4 @@ export class AdminSidebarComponent implements OnInit {
   test(){
     console.log('test clicked');
   }
-
 }

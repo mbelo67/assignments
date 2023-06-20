@@ -11,5 +11,4 @@ export class FrontFooterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

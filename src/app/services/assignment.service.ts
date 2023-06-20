@@ -23,9 +23,6 @@ export class AssignmentService {
         // Angular utilise pour cela la notion d'Observable
         return this.http.get<Assignment[]>(this.baseUrl + "/assigments?page=" + page + "&limit=" + limit);
 
-        // of() permet de créer un Observable qui va
-        // contenir les données du tableau assignments
-        //return of(this.assignments);
     }
 
     getAssignment(id: number): Observable<Assignment | undefined> {
@@ -52,13 +49,7 @@ export class AssignmentService {
                 catchError(this.handleError<Assignment>("Erreur dans le traitement de assignment avec id = " + id))
             )
 
-        // On va chercher dans le tableau des assignments
-        // l'assignment dont l'id est celui passé en paramètre
-
-        //const assignment = this.assignments.find(a => a.id === id);
-        // on retourne cet assignment encapsulé dans un Observable
-        //return of(assignment);
-    }
+            }
 
     private handleError<T>(operation: any, result?: T) {
         return (error: any): Observable<T> => {
@@ -74,11 +65,7 @@ export class AssignmentService {
 
         // plus tard on utilisera un web service pour l'ajout dans une vraie BD
         return this.http.post<Assignment>(this.baseUrl, assignment);
-        // on ajoute le devoir au tableau des devoirs
-        //this.assignments.push(assignment);
-        // on retourne un message de succès à travers
-        // un Observable
-        //return of(`Assignment ${assignment.nom} ajouté avec succès`);
+
     }
 
     updateAssignment(assignment: Assignment): Observable<any> {
@@ -86,40 +73,10 @@ export class AssignmentService {
         // données
         return this.http.put<Assignment>(this.baseUrl, assignment);
 
-        // dans la version tableau : rien à faire (pourquoi ? Parceque assignment
-        // est déjà un élément du tableau this.assignments)
-
-        //this.loggingService.log(assignment.nom, 'modifié');
-
-        //return of(`Assignment ${assignment.nom} modifié avec succès`)
     }
 
     deleteAssignment(assignment: Assignment): Observable<any> {
         return this.http.delete(this.baseUrl + "/" + assignment._id)
-        // pour supprimer on passe à la méthode splice
-        // l'index de l'assignment à supprimer et 
-        // le nombre d'éléments à supprimer (ici 1)
-        /*
-        const index = this.assignments.indexOf(assignment);
-        this.assignments.splice(index, 1);
-    
-        this.loggingService.log(assignment.nom, 'supprimé');
-    
-        return of('Assignment supprimé avec succès')
-        */
-    }
 
-    /*peuplerBD() {
-      bdInitialAssignments.forEach(a => {
-        const newAssignment = new Assignment();
-        newAssignment.id = a.id;
-        newAssignment.nom = a.nom;
-        newAssignment.dateDeRendu = new Date(a.dateDeRendu);
-        newAssignment.rendu = a.rendu;
-  
-        this.addAssignment(newAssignment)
-        .subscribe((reponse) => {
-          console.log(reponse.message);
-        })
-      })*/
+    }
 }

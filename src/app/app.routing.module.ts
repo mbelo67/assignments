@@ -21,8 +21,6 @@ const appRoutes: Routes = [
     /*canActivate: [AuthGuard],*/
     children: [
       { path: '', component: AppComponent, pathMatch: 'full' },
-      /*{ path: 'transactions', component: TransactionsComponent, pathMatch: 'full' },
-      { path: 'transactions/ajouter', component: AddTransactionComponent, pathMatch: 'full' },*/
       { path: '403', component: ForbiddenComponent, pathMatch: 'full' },
       { path: '404', component: NotFoundComponent, pathMatch: 'full' },
       { path: '500', component: ServerErrorComponent, pathMatch: 'full' },
