@@ -11,7 +11,6 @@ import { Matiere } from "../models/matiere.model";
 export class MatiereService {
     baseUrl = environment.apiUrl;
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
-        //this.loggingService.setNiveauTrace(2);
 
     }
     getProject(id:string) {

@@ -28,8 +28,7 @@ export class AuthService {
 
                     if (xToken.length > 0) {
                         //this.cookieService.set(GlobalConstants.cookieKeys.currentUser, xToken);
-                        /*this.cookieService.set(GlobalConstants.cookieKeys.currentProject,resp.body.projects[0]._id);
-                        localStorage.setItem(GlobalConstants.storageKeys.projectList,JSON.stringify(resp.body.projects));*/
+                        
                         this.isLoggedIn.next(true);
                     }
                     return resp;
@@ -42,13 +41,10 @@ export class AuthService {
     logOut() {
         this.cookieService.deleteAll();
         this.isLoggedIn.next(false);
-        /*localStorage.removeItem(GlobalConstants.storageKeys.currentProjectName);
-        localStorage.removeItem(GlobalConstants.storageKeys.projectList);*/
         this.router.navigate(['/login']);
     }
 
     isAdmin() {
-        //console.log(this.isAdminUser);
         let isUserAdmin = new Promise((resolve, reject) => {
             resolve(this.isAdminUser.next(true));
         });
@@ -60,9 +56,7 @@ export class AuthService {
         let isLogged = new Promise((resolve, reject) => {
             resolve(this.isLoggedIn.next(true));
         });
-        //return this.loggedIn;
         return isLogged;
-        //return {isAdmin:true,isLogged:true};
     }
 
 

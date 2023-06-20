@@ -14,20 +14,7 @@ export class AuthGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-        // si renvoie true ça dit que les routes associées à ce gardien sont navigables
-        /* return this.authService.isLogged()
-         .then((admin):boolean => {
-           //console.log("admin = " + admin + " type : " + (typeof admin))
-           if(admin) {
-             console.log("GARDIEN autorise la navigation, vous êtes bien un connecter");
-             return true;
-           } else {
-             // si pas admin on force la navigation vers la page d'accueil
-             console.log("GARDIEN n'autorise pas la navigation, vous n'êtes pas connecter");
-             this.router.navigate(['/login'], { queryParams: { returnUrl:this.router.url } });
-             return false;
-           }
-         })*/
+      
         if (this.cookieService.get('currentUser')) {
             // logged in so return true
             return true;
