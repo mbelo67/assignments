@@ -34,7 +34,7 @@ console.log("test")
           this.showSpinner = false;
           return;
         }
-        this.router.navigate(['/']);
+        this.router.navigate(['/admin']);
       } else {
         this.loginError = "email ou mot de passe erroné";
       }

@@ -34,13 +34,6 @@ const appRoutes: Routes = [
     ]
   },
   {
-    path: 'admin',
-    component: AdminLayoutComponent,
-    children: [
-      { path: '', component: AppComponent, pathMatch: 'full' },
-    ]
-  },
-  {
     path: 'assignments-etudiant',
     component: AssignmentsFrontComponent
   },
