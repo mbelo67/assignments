@@ -1,0 +1,45 @@
+<h2 class="assignments-title">{{titre}}</h2>
+<!-- <h1>Exemple de scrolling virtuel infini</h1> -->
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
+    <!-- <mat-list *cdkVirtualFor="let a of assignments">
+        <a routerLink="/assignments/{{a.id}}">
+            <h3 mat-subheader>Date limite: {{a.dateDeRendu | date: 'dd/MM/yy'}}</h3>
+            <mat-list-item>
+                <p appRendu *ngIf="a.rendu; else nonsoumis">
+                    {{a.nom}} id = {{a._id}}
+                </p>
+                <ng-template #nonsoumis>
+                    {{a.nom}} NON RENDU id = {{a._id}}
+                </ng-template>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </a>
+    </mat-list> -->
+    <div class="assignment-card">
+        <!-- <mat-card>
+          <mat-card-title class="assignment-name">{{assignmentTransmis.nom}}</mat-card-title>
+          <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date:"dd/MM/yy"}}</mat-card-subtitle>
+          <div id="bottom">
+            <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()" class="rendu">Rendu</mat-checkbox>
+            <button mat-stroked-button color="primary" (click)="onClickEdit()" [disabled]="!loggedIn">EDIT</button>
+            <button mat-raised-button color="warn" (click)="onDelete()" [disabled]="!loggedIn">DELETE</button>
+          </div>
+        </mat-card> -->
+        <mat-list *cdkVirtualFor="let a of assignments">
+            <mat-card class="custom-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{a.nom}}</mat-card-title>
+                    <mat-card-subtitle>{{a._id}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="http://dummyimage.com/169x100.png/5fa2dd/ffffff" alt="Image 1">
+                <mat-card-content>
+                    Date limite: {{a.dateDeRendu | date: 'dd/MM/yy'}}
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-stroked-button color="primary">Soumettre</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-list>
+    </div>
+</cdk-virtual-scroll-viewport>

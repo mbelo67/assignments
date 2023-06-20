@@ -38,17 +38,18 @@ import { FrontSidebarComponent } from './sidebars/front-sidebar/front-sidebar.co
 import { AdminSidebarComponent } from './sidebars/admin-sidebar/admin-sidebar.component';
 import { FrontFooterComponent } from './footers/front-footer/front-footer.component';
 import { AdminFooterComponent } from './footers/admin-footer/admin-footer.component';
-import { MaterialCustomModule } from '../material.module'
+import { MaterialCustomModule } from '../material.module';
+import { AssignmentsFrontComponent } from './assignments/assignments-front/assignments-front.component'
 
 const routes: Routes = [
   // {
   //   path: '',
   //   component: AssignmentsComponent
   // },
-  // {
-  //   path: 'home',
-  //   component: AssignmentsComponent
-  // },
+  {
+    path: 'assignments-etudiant',
+    component: AssignmentsFrontComponent
+  },
   {
     path: 'add',
     component: AddAssignmentComponent
@@ -70,7 +71,8 @@ const routes: Routes = [
     path: 'admin',
     component: AdminLayoutComponent,
     children: [
-      { path: '', component: AppComponent, pathMatch: 'full' }
+      { path: '', component: AppComponent, pathMatch: 'full' },
+      { path: 'assignments', component: AssignmentsComponent, pathMatch: 'full' }
     ]
   },
   {
@@ -100,6 +102,7 @@ const routes: Routes = [
     AdminSidebarComponent,
     FrontFooterComponent,
     AdminFooterComponent,
+    AssignmentsFrontComponent,
   ],
   imports: [
     BrowserModule,
