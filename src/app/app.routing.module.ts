@@ -16,9 +16,13 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 const appRoutes: Routes = [
   //Site routes goes here 
   {
-    path: '',
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'front',
     component: FrontLayoutComponent, 
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: '', component: AppComponent, pathMatch: 'full' },
       { path: '403', component: ForbiddenComponent, pathMatch: 'full' },
@@ -60,7 +64,8 @@ const appRoutes: Routes = [
   },
 
   //no layout routes
-  { path: 'login', component: LoginComponent },
+  
+  { path: '', component: LoginComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '/404' },
 
