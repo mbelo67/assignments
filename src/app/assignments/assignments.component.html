@@ -1,16 +1,6 @@
 <h2 class="assignments-title">{{titre}}</h2>
 
 <div class="assignment-card">
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Selection de la page des assigments"
-                 (page)="handlePage($event)"
-                 class="demo-paginator"
-                 [length]="totalPages"
-                 [pageSize]="limit"
-                 [pageIndex]="page"
-  >
-  </mat-paginator>
 <table mat-table [dataSource]="assignments" class="mat-elevation-z8 demo-table">
     <!-- id Column -->
     <ng-container matColumnDef="id">
